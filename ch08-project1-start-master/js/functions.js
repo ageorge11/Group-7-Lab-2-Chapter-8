@@ -4,7 +4,7 @@ var calculateTotal = function(quantity, price) {
     return quantity * price;
     };
     
-    var output = function outputCartRow(file, title, quantity, price, total) {
+   function outputCartRow(file, title, quantity, price, total) {
     total = calculateTotal(quantity[i], price[i]);
     document.write("<tr>");
     document.write("<td><img src='images/" + file[i] + "'</td>");
@@ -15,4 +15,29 @@ var calculateTotal = function(quantity, price) {
     document.write("</tr>");
     };
     
+  function outputSubtotal(quantity, price) {
+    var subtotals = 0;
+    for (var i = 0; i < price.length; i++) {
+    var totals = quantity[i] * price[i];
+    subtotals += totals;
+    }
+    return subtotals;
+    };
     
+  function calculateTax(subTotal){
+    return subTotal * 0.1;
+    
+    };
+    
+    
+ function calculateShipping(subTotal){
+    if (subTotal < 1000){
+    return 40;
+    } else {
+    return 0;
+    }
+    };
+    
+function calculateGrandTotal(subTotal, tax, shipping){
+    return subTotal + tax + shipping;
+    };
